@@ -1,6 +1,6 @@
 resource/
 build/
-*.sconsign
+*.sconsign*
 tags
 
 
