@@ -1,0 +1,5 @@
+Import('env MainLibraryPaths MainLibraryLinks')
+MainLibraryPaths.append('libs/simplexnoise/')
+MainLibraryLinks.append('simplexnoise')
+env.Library('simplexnoise', ['simplexnoise.cpp'])
+

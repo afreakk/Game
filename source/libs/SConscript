@@ -1,0 +1,2 @@
+Import('env MainLibraryPaths MainLibraryLinks')
+SConscript('simplexnoise/SConscript',exports='env MainLibraryPaths MainLibraryLinks')

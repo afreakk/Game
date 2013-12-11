@@ -1,6 +1,5 @@
 #include "input.h"
 #include "OgreStringConverter.h"
-#include "simulation.h"
 
 void linuxNoStickyMouse(OIS::ParamList & paramList)
 {

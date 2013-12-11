@@ -1,7 +1,7 @@
 #ifndef FLOORMANAGER_H
 #define FLOORMANAGER_H
 #include "DynamicObject.h"
-#include "simplexnoise.h"
+#include "libs/simplexnoise/simplexnoise.h"
 #include "utils.h"
 #include <vector>
 class FloorManager
