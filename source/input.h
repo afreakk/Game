@@ -4,8 +4,8 @@
 //
 enum InputFlags
 {
-    USE_MOUSE = 1,
-    USE_KEYBOARD =2,
+    USE_MOUSE =     (1<<0),
+    USE_KEYBOARD =  (1<<1),
 };
 
 inline InputFlags operator|(InputFlags a, InputFlags b)
@@ -23,15 +23,6 @@ inline InputFlags operator|(InputFlags a, InputFlags b)
 #include <map>
 class InputHandler : public OIS::MouseListener, public OIS::KeyListener, public Ogre::Singleton<InputHandler>
 {
-private:
-	OIS::InputManager *m_ois;
-	OIS::Mouse      *m_mouse;
-	OIS::Keyboard*m_keyboard;
-	unsigned long     m_hWnd;
-    bool              m_quit;
-    std::map<std::string, BaseController*>    m_mouseListeners;
-    std::map<std::string, BaseController*>      m_keyListeners;
-
 public:
     bool getQuit();
     void setQuit(bool val);
@@ -54,5 +45,14 @@ public:
 	bool keyPressed(const OIS::KeyEvent &evt);
 	bool keyReleased(const OIS::KeyEvent &evt);
 	
+private:
+	OIS::InputManager *m_ois;
+	OIS::Mouse      *m_mouse;
+	OIS::Keyboard*m_keyboard;
+	unsigned long     m_hWnd;
+    bool              m_quit;
+    std::map<std::string, BaseController*>    m_mouseListeners;
+    std::map<std::string, BaseController*>      m_keyListeners;
+
 };
 

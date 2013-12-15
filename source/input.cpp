@@ -20,22 +20,15 @@ InputHandler::InputHandler(unsigned long hWnd, InputFlags flags):m_mouse(NULL),m
 	pl.insert(OIS::ParamList::value_type("WINDOW", Ogre::StringConverter::toString(hWnd)));
 	m_hWnd = hWnd;
 	m_ois = OIS::InputManager::createInputSystem( pl );
-    switch (flags)
+    if(flags&USE_MOUSE)
     {
-        case USE_MOUSE+USE_KEYBOARD:
-            m_mouse = static_cast<OIS::Mouse*>(m_ois->createInputObject( OIS::OISMouse, true ));
-            m_mouse->setEventCallback(this);
-            m_keyboard = static_cast<OIS::Keyboard*>(m_ois->createInputObject( OIS::OISKeyboard, true));
-            m_keyboard->setEventCallback(this);
-            break;
-        case USE_MOUSE:
-            m_mouse = static_cast<OIS::Mouse*>(m_ois->createInputObject( OIS::OISMouse, true ));
-            m_mouse->setEventCallback(this);
-            break;
-        case USE_KEYBOARD:
-            m_keyboard = static_cast<OIS::Keyboard*>(m_ois->createInputObject( OIS::OISKeyboard, true));
-            m_keyboard->setEventCallback(this);
-            break;
+        m_mouse = static_cast<OIS::Mouse*>(m_ois->createInputObject( OIS::OISMouse, true ));
+        m_mouse->setEventCallback(this);
+    }
+    if(flags&USE_KEYBOARD)
+    {
+        m_keyboard = static_cast<OIS::Keyboard*>(m_ois->createInputObject( OIS::OISKeyboard, true));
+        m_keyboard->setEventCallback(this);
     }
 }
 

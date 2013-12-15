@@ -31,9 +31,7 @@ link_shared_library_message = '%sLinking Shared Library %s==> %s$TARGET%s' % \
 
 
 
-env = Environment( ENV = {'PATH' : os.environ['PATH'],
-                         'TERM' : os.environ['TERM'],
-                         'HOME' : os.environ['HOME']},
+env = Environment( ENV = { 'PATH' : os.environ['PATH'], 'TERM' : os.environ['TERM'], 'HOME' : os.environ['HOME'] },
     CXXCOMSTR = compile_source_message,
     CCCOMSTR = compile_source_message,
     SHCCCOMSTR = compile_shared_source_message,
@@ -46,10 +44,9 @@ env = Environment( ENV = {'PATH' : os.environ['PATH'],
     CCFLAGS = '-g');
 
 MainHeaderPaths = [ '/usr/include/OGRE/'    ,
-                    '/usr/share/OGRE/Samples/Common/include/'   ,
-                    '/usr/include/OIS/'     ,
-                    '/usr/include/CEGUI/'];
-MainLibraryPaths = ['/usr/lib64/OGRE/'];
+                    '/usr/include/OIS/'     ];
+
+MainLibraryPaths = []; #not needed on linux install
 MainLibraryLinks = ['OgreMain', 'OIS', 'boost_system'];
 
 SConscript('source/SConscript',exports='env MainHeaderPaths MainLibraryPaths MainLibraryLinks', variant_dir='build', duplicate=0)

@@ -2,18 +2,18 @@
 #define FLOORMANAGER_H
 #include "DynamicObject.h"
 #include "libs/simplexnoise/simplexnoise.h"
-#include "utils.h"
+#include "libs/utils.h"
 #include <vector>
 class FloorManager
 {
     public:
-        FloorManager(Ogre::SceneManager* scMgr, int numXRows, int numZRows, float sizePerTile);
+        FloorManager(Ogre::SceneManager* scMgr, int xRows, int zRows, float tileSize);
         ~FloorManager();
+        void init(const float& heightScale);
     private:
-        void init();
-        int xRows, zRows;
-        float tileSize;
-        Ogre::SceneManager* smgr;
-        std::vector<  std::vector<DynamicObject>  > bricks;
+        int m_xRows, m_zRows;
+        float m_tileSize;
+        Ogre::SceneManager* m_smgr;
+        std::vector<  std::vector<DynamicObject>  > m_bricks;
 };
 #endif
